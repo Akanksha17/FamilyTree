@@ -1,6 +1,7 @@
 relationship_type = {
     'CHILD': 'CHILD',
-    'SPOUSE': 'SPOUSE'
+    'SPOUSE': 'SPOUSE',
+    'PARENT': 'PARENT'
 }
 
 member_gender = {
@@ -46,4 +47,9 @@ relationship_def_backtrace = {
             relationship_unit['FEMALE_SPOUSE']
         ]
     ]
+}
+
+valid_actions = {
+    'ADD_CHILD': 'ADD_CHILD',
+    'GET_RELATIONSHIP': 'GET_RELATIONSHIP'
 }

@@ -6,34 +6,26 @@ from .src.models import member
 from .src.constants import member_gender, relationship_unit
 
 
-def print_hi(name):
-    king = member.Member('King Shan', member_gender['MALE'])
-    members_to_add = [
-        {
-            'name': 'King Shan',
-            'gender': member_gender['MALE']
-        },
-        {
-            'name': 'Queen Anga',
-            'gender': member_gender['FEMALE']
-        },
-        
-    ]
-    member_relationships_to_add = [{
-        'to': king,
-        'from': member.Member('Queen Anga', member_gender['FEMALE']),
-        'relationship': relationship_unit['FEMALE_SPOUSE']
-    },
-        {
+def isEmptyUserInput(user_input):
+    if user_input is None:
+        return True
+    else:
+        return False
 
-        }
-    ]
-    relationship = relationship_unit['FEMALE_SPOUSE']
-    king.add_relationship(relationship)
+
+def start_family_tree(user_input):
+    if isEmptyUserInput(input_from_user):
+        error_msg = 'Invalid Input'
+        return error_msg
+
+    input_list = user_input.split(' ')
+    action = input_list[0]
+    pass
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    input_from_user = input('Enter command: ')
+    start_family_tree(input_from_user)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
