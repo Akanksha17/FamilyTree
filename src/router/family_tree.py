@@ -2,15 +2,17 @@ from ..constants import output_messages, valid_actions, relationship_type
 from ..controller import member as member_controller
 
 
-def execute_action(action, arguments=None):
+def execute_action(action, family_tree, arguments=None):
     action_map = {
         valid_actions['ADD_CHILD']: member_controller.add_relationship(
             arguments,
-            relationship_type['CHILD']
+            relationship_type['CHILD'],
+            family_tree
         ),
 
         valid_actions['GET_RELATIONSHIP']: member_controller.get_relationship(
-            arguments
+            arguments,
+            family_tree
         )
     }
     invalid_action_msg = output_messages.get('INVALID_ACTION', 'INVALID ACTION')

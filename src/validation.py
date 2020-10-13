@@ -18,7 +18,7 @@ def is_action_valid(action):
 def is_relationship_data_valid(relationship, input_data):
     relationship_args_map = {
         relationship_type['CHILD']: 3,
-        valid_actions['SPOUSE']: 2
+        relationship_type['SPOUSE']: 2
     }
     if len(input_data) < relationship_args_map[relationship]:
         return False

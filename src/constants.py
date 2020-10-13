@@ -5,14 +5,14 @@ relationship_type = {
 }
 
 member_gender = {
-    'MALE': 'MALE',
-    'FEMALE': 'FEMALE',
+    'Male': 'MALE',
+    'Female': 'FEMALE',
     'N/A': 'N/A'
 }
 
 relationship_unit = {
     'MALE_PARENT': {
-        'gender': member_gender['MALE'],
+        'gender': member_gender['Male'],
         'type': relationship_type['PARENT']
     },
     'ANY_PARENT': {
@@ -20,15 +20,15 @@ relationship_unit = {
             'type': relationship_type['PARENT']
         },
     'FEMALE_CHILD': {
-            'gender': member_gender['FEMALE'],
+            'gender': member_gender['Female'],
             'type': relationship_type['CHILD']
         },
     'MALE_CHILD': {
-            'gender': member_gender['MALE'],
+            'gender': member_gender['Male'],
             'type': relationship_type['CHILD']
         },
     'FEMALE_SPOUSE': {
-        'gender': member_gender['FEMALE'],
+        'gender': member_gender['Female'],
         'type': relationship_type['SPOUSE']
     }
 }

@@ -3,126 +3,126 @@ from .constants import member_gender, relationship_type
 members_to_add = [
     {
         'name': 'King Shan',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
     {
         'name': 'Queen Anga',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Chit',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
     {
         'name': 'Amba',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Ish',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
     {
         'name': 'Vich',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
     {
         'name': 'Lika',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Satya',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Vyan',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
     {
         'name': 'Dritha',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Jaya',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
     {
         'name': 'Tritha',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Vritha',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     }, {
         'name': 'Vila',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Chika',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Vritha',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     }, {
         'name': 'Vila',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Chika',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Arit',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     }, {
         'name': 'Jnki',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Ahit',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
     {
         'name': 'Satvy',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     }, {
         'name': 'Asva',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
     {
         'name': 'Krpi',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Vyas',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
     {
         'name': 'Atya',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Yodhan',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     }, {
         'name': 'Laki',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     }, {
         'name': 'Lavnya',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
     {
         'name': 'Vasa',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
     {
         'name': 'Kriya',
-        'gender': member_gender['MALE']
+        'gender': member_gender['Male']
     },
 
     {
         'name': 'Krithi',
-        'gender': member_gender['FEMALE']
+        'gender': member_gender['Female']
     },
 ]
 
