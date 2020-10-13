@@ -1,13 +1,13 @@
-from .test_data import members_to_add, relationships_to_add
-from .models import member, relationship
-from .constants import relationship_def_backtrace, relationship_type
+from src.models import member, relationship
+from src.test_data import members_to_add, relationships_to_add
+from src.constants import relationship_def_backtrace, relationship_type
 
 
 def initialise_members(members=None, head_member=None):
     if members is None:
         members = {}
     for i in members_to_add:
-        members[i['name']] = member.Member(i)
+        members[i['name']] = member.Member(member_details)
         if head_member is None:
             head_member = members[i['name']]
     return members, head_member

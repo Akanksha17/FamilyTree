@@ -12,7 +12,7 @@ def add_spouse(from_member, to_member):
 
 
 def add_child(from_member, to_member, gender):
-    new_member = member.Member(to_member, gender)
+    new_member = member.Member(member_details)
     from_member.set_child(new_member)
     msg = output_messages['CHILD_ADDITION_SUCCEEDED']
     return msg
