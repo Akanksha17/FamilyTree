@@ -36,23 +36,30 @@ def add_relationship(relationship_data,
 
     from_member_name = relationship_data[0]
     to_member_name = relationship_data[1]
-    from_member = family_tree_instance.members[from_member_name]
-    gender = 'MALE'
-    relationship_setter = {
-        relationship_type_constants['PARENT']: add_parent(from_member,
-                                                          to_member_name,
-                                                          family_tree_instance),
+    gender = relationship_data[2].upper()
+    from_member = family_tree_instance.members.get(from_member_name)
+    if from_member:
+        print('--------***********', from_member)
+        relationship_setter = {
+            relationship_type_constants['PARENT']: add_parent(from_member,
+                                                              to_member_name,
+                                                              family_tree_instance),
 
-        relationship_type_constants['SPOUSE']: add_spouse(from_member,
-                                                          to_member_name,
-                                                          family_tree_instance),
+            relationship_type_constants['SPOUSE']: add_spouse(from_member,
+                                                              to_member_name,
+                                                              family_tree_instance),
 
-        relationship_type_constants['CHILD']: add_child(from_member,
-                                                        to_member_name,
-                                                        gender,
-                                                        family_tree_instance)
-    }
-    return relationship_setter.get(relationship_type, 'Invalid')
+            relationship_type_constants['CHILD']: add_child(from_member,
+                                                            to_member_name,
+                                                            gender,
+                                                            family_tree_instance)
+        }
+        return relationship_setter.get(relationship_type, 'Invalid')
+    else:
+        return {
+            'msg': output_messages['PERSON_NOT_FOUND'],
+            'updated_family_tree': family_tree_instance
+        }
 
 
 def get_parent(member_obj, parent_gender):
