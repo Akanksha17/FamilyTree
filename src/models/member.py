@@ -4,7 +4,7 @@ class Member:
         self.name = name
         self.gender = gender
         self._spouse = None
-        self._child = None
+        self._children = {}
         self._parent = None
 
     def set_parent(self, parent):
@@ -19,8 +19,9 @@ class Member:
     def get_spouse(self):
         return self._spouse
 
-    def set_child(self, child):
-        self._child = child
+    def set_children(self, child):
+        name = child.name
+        self._children[name] = child
 
-    def get_child(self):
-        return self._child
+    def get_children(self):
+        return self._children

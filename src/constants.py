@@ -15,25 +15,37 @@ relationship_unit = {
         'gender': member_gender['Male'],
         'type': relationship_type['PARENT']
     },
+    'FEMALE_PARENT': {
+        'gender': member_gender['Female'],
+        'type': relationship_type['PARENT']
+    },
     'ANY_PARENT': {
-            'gender': member_gender['N/A'],
-            'type': relationship_type['PARENT']
-        },
+        'gender': member_gender['N/A'],
+        'type': relationship_type['PARENT']
+    },
     'FEMALE_CHILD': {
-            'gender': member_gender['Female'],
-            'type': relationship_type['CHILD']
-        },
+        'gender': member_gender['Female'],
+        'type': relationship_type['CHILD']
+    },
     'MALE_CHILD': {
-            'gender': member_gender['Male'],
-            'type': relationship_type['CHILD']
-        },
+        'gender': member_gender['Male'],
+        'type': relationship_type['CHILD']
+    },
+    'ANY_CHILD': {
+        'gender': member_gender['N/A'],
+        'type': relationship_type['CHILD']
+    },
     'FEMALE_SPOUSE': {
         'gender': member_gender['Female'],
+        'type': relationship_type['SPOUSE']
+    },
+    'MALE_SPOUSE': {
+        'gender': member_gender['Male'],
         'type': relationship_type['SPOUSE']
     }
 }
 
-relationship_def_backtrace = {
+relationship_def = {
     'PATERNAL-AUNT': [
         [
             relationship_unit['MALE_PARENT'],
@@ -45,6 +57,11 @@ relationship_def_backtrace = {
             relationship_unit['ANY_PARENT'],
             relationship_unit['MALE_CHILD'],
             relationship_unit['FEMALE_SPOUSE']
+        ]
+    ],
+    'FATHER': [
+        [
+            relationship_unit['MALE_PARENT']
         ]
     ]
 }

@@ -67,10 +67,11 @@ class TestMember(unittest.TestCase):
         member1 = members[0]
         member2 = members[1]
 
-        member1.set_child(member2)
-        updated_member_child = member1.get_child()
-        self.assertEqual(updated_member_child.name, 'Chit')
-        self.assertEqual(updated_member_child.gender,  member_gender['Male'])
+        member1.set_children(member2)
+        member_children = member1.get_children()
+        self.assert_('Chit' in member_children.keys())
+        self.assertEqual(member_children['Chit'].name, 'Chit')
+        self.assertEqual(member_children['Chit'].gender,  member_gender['Male'])
 
 
 if __name__ == '__main__':

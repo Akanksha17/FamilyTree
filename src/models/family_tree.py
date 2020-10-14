@@ -1,5 +1,5 @@
 class FamilyTree:
-    def __init__(self, members):
+    def __init__(self, members=None):
         self.members = members
         self._head_member = None
 

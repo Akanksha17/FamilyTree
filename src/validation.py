@@ -1,4 +1,4 @@
-from .constants import valid_actions, relationship_type
+from .constants import valid_actions, relationship_type, relationship_def
 
 
 def is_empty_user_input(user_input):
@@ -31,4 +31,10 @@ def validate_relationship_data(relationship, input_data):
         return False
     else:
         return True
+
+
+def is_relationship_query_valid(relationship):
+    if relationship.upper() in relationship_def.keys():
+        return True
+    return False
 

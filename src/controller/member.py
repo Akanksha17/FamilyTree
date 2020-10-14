@@ -1,10 +1,18 @@
-from ..service import member
+from src.service import member as member_service
 
 
-def add_relationship(input_data, relationship, family_tree):
-    result = member.add_relationship(
-        input_data,
+def add_relationship(arguments, relationship, family_tree_instance):
+    result = member_service.add_relationship(
+        arguments,
         relationship,
-        family_tree
+        family_tree_instance
+    )
+    return result
+
+
+def get_relationship(arguments, family_tree_instance):
+    result = member_service.get_relationship(
+        arguments,
+        family_tree_instance
     )
     return result
