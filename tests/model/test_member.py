@@ -6,7 +6,7 @@ from tests.data_helper import member as member_helper
 
 class TestMember(unittest.TestCase):
     def test_member_init(self):
-        new_member = member.Member('King Shan', member_gender['M'])
+        new_member = member.Member('King Shan', member_gender['MALE'])
         self.assertEqual(new_member.gender, member_gender['MALE'])
         self.assertEqual(new_member.name, 'King Shan')
 
@@ -69,7 +69,7 @@ class TestMember(unittest.TestCase):
 
         member1.set_children(member2)
         member_children = member1.get_children()
-        self.assert_('Chit' in member_children.keys())
+        self.assertTrue('Chit' in member_children.keys())
         self.assertEqual(member_children['Chit'].name, 'Chit')
         self.assertEqual(member_children['Chit'].gender,  member_gender['MALE'])
 

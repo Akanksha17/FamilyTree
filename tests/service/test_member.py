@@ -29,7 +29,7 @@ class TestMember(unittest.TestCase):
         result = member_service.add_relationship(add_child_relationship_data, child_relationship, family_tree)
         updated_family_tree = result['updated_family_tree']
         result = member_service.get_relationship(['Chit', 'Father'], updated_family_tree)
-        self.assertEqual(result, [parent])
+        self.assertEqual(result['members_list'][0], parent)
 
     def test_add_child_failure(self):
         mock_relationship_data = ['Kriya', 'Chit', 'FEMALE']

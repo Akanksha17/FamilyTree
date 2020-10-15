@@ -1,4 +1,5 @@
-from .constants import valid_actions, relationship_type, relationship_def, member_gender, output_messages
+from src.constants import valid_actions, relationship_type, member_gender, output_messages
+from src.relationship_definition import relationship_def
 
 
 def is_empty_user_input(user_input):

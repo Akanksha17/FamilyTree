@@ -45,33 +45,6 @@ relationship_unit = {
     }
 }
 
-relationship_def = {
-    'PATERNAL-AUNT': [
-        [
-            relationship_unit['MALE_PARENT'],
-            relationship_unit['ANY_PARENT'],
-            relationship_unit['FEMALE_CHILD']
-        ],
-        [
-            relationship_unit['MALE_PARENT'],
-            relationship_unit['ANY_PARENT'],
-            relationship_unit['MALE_CHILD'],
-            relationship_unit['FEMALE_SPOUSE']
-        ]
-
-    ],
-    'FATHER': [
-        [
-            relationship_unit['MALE_PARENT']
-        ]
-    ],
-    'SON': [
-        [
-            relationship_unit['MALE_CHILD'],
-        ]
-    ]
-}
-
 valid_actions = {
     'ADD_CHILD': 'ADD_CHILD',
     'GET_RELATIONSHIP': 'GET_RELATIONSHIP'
@@ -86,5 +59,6 @@ output_messages = {
     'INVALID_GENDER': 'INVALID_GENDER',
     'INVALID_RELATIONSHIP_TYPE': 'INVALID_RELATIONSHIP_TYPE',
     'CHILD_ADDITION_FAILED': 'CHILD_ADDITION_FAILED',
-    'RELATIONSHIP_UNSUPPORTED': 'RELATIONSHIP_UNSUPPORTED'
+    'RELATIONSHIP_UNSUPPORTED': 'RELATIONSHIP_UNSUPPORTED',
+    'SUCCESS': 'SUCCESS'
 }

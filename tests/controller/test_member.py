@@ -37,5 +37,9 @@ class TestMemberController(unittest.TestCase):
                                                           child_relationship,
                                                           family_tree_obj)
         result = member_controller.get_relationship(['Shan', 'Son'], added_result['updated_family_tree'])
-        self.assertEqual(len(result), 1)
-        self.assertEqual(result[0].name, 'Chit')
+        self.assertEqual(len(result['members_list']), 1)
+        self.assertEqual(result['members_list'][0].name, 'Chit')
+
+    def test_get_relationship_none_case(self):
+        result = member_controller.get_relationship(['Shan', 'Daughter'], family_tree_obj)
+        self.assertEqual(len(result['members_list']), 0)

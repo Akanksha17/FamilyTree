@@ -1,8 +1,8 @@
 from src.validation import is_relationship_data_valid, is_relationship_query_valid
-from src.constants import output_messages, relationship_type as relationship_type_constants, \
-    relationship_def, member_gender
+from src.constants import output_messages, relationship_type as relationship_type_constants, member_gender
 from src.models import member
 from src.service import family_tree as family_tree_service
+from src.relationship_definition import relationship_def
 import copy
 
 
@@ -117,7 +117,7 @@ def get_relationship(arguments, family_tree_instance):
     if not is_relationship_query_valid(relationship_name):
         return {
             'msg': output_messages['RELATIONSHIP_UNSUPPORTED'],
-            'updated_family_tree': family_tree_instance
+            'members_list': []
         }
     to_member = family_tree_instance.members[to_member_name]
     relationship_trace = relationship_def[relationship_name.upper()]
@@ -132,7 +132,7 @@ def get_relationship(arguments, family_tree_instance):
                 result1.extend(get_member)
             start_members = result1
         final_result.extend(result1)
-    return final_result
+    return { 'msg': output_messages['SUCCESS'], 'members_list': final_result}
 
 
 
