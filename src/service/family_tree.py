@@ -1,5 +1,5 @@
 from src.validation import is_empty_user_input
-from src.router.member import router as member_router
+from src.action import member as member_action
 from src.constants import output_messages
 import logging
 
@@ -18,5 +18,5 @@ def update_family_tree(family_tree_instance, input_command):
     action = input_list[0]
     logging.debug('Action requested:', action)
 
-    execution_result = member_router(action, family_tree_instance,  input_list[1::])
+    execution_result = member_action.execute(action, family_tree_instance,  input_list[1::])
     return execution_result

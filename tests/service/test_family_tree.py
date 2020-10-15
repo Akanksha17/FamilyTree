@@ -7,7 +7,7 @@ from src.constants import member_gender, output_messages
 class TestFamilyTree(unittest.TestCase):
     def test_family_tree_update(self):
         command = 'ADD_CHILD Shan Chit Male'
-        new_member = member_model.Member('Shan', member_gender['Male'])
+        new_member = member_model.Member('Shan', member_gender['MALE'])
         members_obj = {
             'Shan': new_member
         }

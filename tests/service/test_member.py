@@ -4,8 +4,8 @@ from src.service import member as member_service
 from tests.helper import member as test_member_helper, family_tree as test_family_tree_helper
 
 child_relationship = relationship_type['CHILD']
-add_child_relationship_data = ['Shan', 'Chit', 'Male']
-parent = test_member_helper.create_test_member('Shan', member_gender['Male'])
+add_child_relationship_data = ['Shan', 'Chit', 'MALE']
+parent = test_member_helper.create_test_member('Shan', member_gender['MALE'])
 family_tree = test_family_tree_helper.create_family_tree({'Shan': parent}, parent)
 
 
@@ -32,7 +32,7 @@ class TestMember(unittest.TestCase):
         self.assertEqual(result, [parent])
 
     def test_add_child_failure(self):
-        mock_relationship_data = ['Kriya', 'Chit', 'Female']
+        mock_relationship_data = ['Kriya', 'Chit', 'FEMALE']
         result = member_service.add_relationship(mock_relationship_data, child_relationship, family_tree)
         self.assertEqual(result['msg'], output_messages['PERSON_NOT_FOUND'])
 

@@ -1,8 +1,14 @@
 from src.constants import output_messages, valid_actions, relationship_type
 from src.controller import member as member_controller
+from src.validation import is_action_valid
 
 
-def router(action, family_tree_instance, arguments=None):
+def execute(action, family_tree_instance, arguments=None):
+    if not is_action_valid(action):
+        return {
+            'msg': output_messages.get('INVALID_ACTION', 'INVALID ACTION'),
+            'updated_family_tree': family_tree_instance
+        }
     action_map = {
         valid_actions['ADD_CHILD']: member_controller.add_relationship(
             arguments,
@@ -15,6 +21,5 @@ def router(action, family_tree_instance, arguments=None):
             family_tree_instance
         )
     }
-    invalid_action_msg = output_messages.get('INVALID_ACTION', 'INVALID ACTION')
-    result = action_map.get(action, invalid_action_msg)
+    result = action_map.get(action)
     return result

@@ -31,15 +31,17 @@ def add_relationship(relationship_data,
                      relationship_type,
                      family_tree_instance
                      ):
-    if not is_relationship_data_valid(relationship_type, relationship_data):
-        return False
-
+    valid, msg_obj = is_relationship_data_valid(relationship_type, relationship_data)
+    if not valid:
+        return {
+            'msg': msg_obj['error_message'],
+            'updated_family_tree': family_tree_instance
+        }
     from_member_name = relationship_data[0]
     to_member_name = relationship_data[1]
     gender = relationship_data[2].upper()
     from_member = family_tree_instance.members.get(from_member_name)
     if from_member:
-        print('--------***********', from_member)
         relationship_setter = {
             relationship_type_constants['PARENT']: add_parent(from_member,
                                                               to_member_name,
@@ -108,6 +110,7 @@ def find_member_relationship(relationship_trace_def, to_member):
 def get_relationship(arguments, family_tree_instance):
     to_member_name = arguments[0]
     relationship_name = arguments[1]
+
     if not is_relationship_query_valid(relationship_name):
         return False
     to_member = family_tree_instance.members[to_member_name]

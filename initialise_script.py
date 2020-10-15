@@ -5,7 +5,7 @@ import logging
 
 
 def initialise_family_tree():
-    new_member = member.Member('Shan', member_gender['Male'])
+    new_member = member.Member('Shan', member_gender['MALE'])
     members = {
         'Shan': new_member
     }

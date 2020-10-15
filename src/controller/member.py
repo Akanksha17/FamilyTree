@@ -1,10 +1,10 @@
 from src.service import member as member_service
 
 
-def add_relationship(arguments, relationship, family_tree_instance):
+def add_relationship(arguments, relationship_type, family_tree_instance):
     result = member_service.add_relationship(
         arguments,
-        relationship,
+        relationship_type,
         family_tree_instance
     )
     return result
