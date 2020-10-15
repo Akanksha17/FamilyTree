@@ -2,11 +2,11 @@ import unittest
 from src.constants import relationship_type, output_messages, member_gender
 from src.service import member as member_service
 from tests.data_helper import member as test_member_helper, family_tree as test_family_tree_helper
-import initialise_script
+
 child_relationship = relationship_type['CHILD']
-add_child_relationship_data = ['Shan', 'Chit', 'MALE']
-parent = test_member_helper.create_test_member('Shan', member_gender['MALE'])
-family_tree = test_family_tree_helper.create_family_tree({'Shan': parent}, parent)
+add_child_relationship_data = ['Anga', 'Chit', 'MALE']
+parent = test_member_helper.create_test_member('Anga', member_gender['FEMALE'])
+family_tree = test_family_tree_helper.create_family_tree({'Anga': parent}, parent)
 
 
 class TestMember(unittest.TestCase):
@@ -27,7 +27,7 @@ class TestMember(unittest.TestCase):
     def test_get_relationship_success(self):
         result = member_service.add_relationship(add_child_relationship_data, child_relationship, family_tree)
         updated_family_tree = result['updated_family_tree']
-        result = member_service.get_relationship(['Chit', 'Father'], updated_family_tree)
+        result = member_service.get_relationship(['Chit', 'Mother'], updated_family_tree)
         self.assertEqual(result['members_list'][0], parent)
 
     def test_add_child_failure(self):

@@ -1,5 +1,5 @@
 from src.constants import member_gender
-
+import copy
 
 class Member:
     def __init__(self, name, gender, **kwargs):
@@ -41,11 +41,12 @@ class Member:
 
     def get_sibling(self, gender=None):
         parent = self._parent
-        parent_child = parent.get_children()
+        parent_child = copy.deepcopy(parent.get_children())
         current_member_name = self.name
-        parent_child.pop(current_member_name)
+        if current_member_name in parent_child.keys():
+            parent_child.pop(current_member_name)
         if not gender:
-            return parent_child
+            return parent_child.values()
         else:
             sibling_list = []
             for key, value in parent_child.items():

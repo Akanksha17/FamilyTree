@@ -5,9 +5,9 @@ import logging
 
 
 def initialise_family_tree():
-    new_member = member.Member('Shan', member_gender['MALE'])
+    new_member = member.Member('Anga', member_gender['FEMALE'])
     members = {
-        'Shan': new_member
+        'Anga': new_member
     }
     family_tree_obj = family_tree.FamilyTree(members)
     logging.debug('Initialised family tree')
@@ -22,7 +22,6 @@ def initialise_family_tree():
             family_tree_obj,
             line.rstrip()
         )
-        print(updated_info['msg'])
 
         family_tree_obj = updated_info['updated_family_tree']
 

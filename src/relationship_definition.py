@@ -7,7 +7,9 @@ direct_relationship = {
     'CHILD': 'CHILD',
     'SISTER': 'SISTER',
     'BROTHER': 'BROTHER',
-    'SIBLING': 'SIBLING',
+    'SIBLINGS': 'SIBLINGS',
+    'HUSBAND': 'HUSBAND',
+    'WIFE': 'WIFE',
     'SPOUSE': 'SPOUSE'
 }
 
@@ -42,8 +44,8 @@ indirect_relationship = {
             direct_relationship['SISTER']
         ],
         [
-            direct_relationship['SIBLING'],
-            direct_relationship['SPOUSE'],
+            direct_relationship['SIBLINGS'],
+            direct_relationship['WIFE'],
         ]
     ],
     'BROTHER-IN-LAW': [
@@ -52,8 +54,8 @@ indirect_relationship = {
             direct_relationship['BROTHER']
         ],
         [
-            direct_relationship['SIBLING'],
-            direct_relationship['SPOUSE'],
+            direct_relationship['SIBLINGS'],
+            direct_relationship['HUSBAND'],
         ]
     ],
 }

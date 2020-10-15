@@ -6,10 +6,10 @@ from src.constants import member_gender, output_messages
 
 class TestFamilyTree(unittest.TestCase):
     def test_family_tree_update(self):
-        command = 'ADD_CHILD Shan Chit Male'
-        new_member = member_model.Member('Shan', member_gender['MALE'])
+        command = 'ADD_CHILD Anga Chit Male'
+        new_member = member_model.Member('Anga', member_gender['FEMALE'])
         members_obj = {
-            'Shan': new_member
+            'Anga': new_member
         }
         family_tree_obj = family_tree_model.FamilyTree(members_obj)
         family_tree_obj.set_head_member(new_member)
