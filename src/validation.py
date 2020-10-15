@@ -3,14 +3,13 @@ from src.relationship_definition import relationship_def
 
 
 def is_empty_user_input(user_input):
-    if user_input is None:
+    if user_input is None or user_input == '':
         return True
     else:
         return False
 
 
 def is_action_valid(action):
-    print(action)
     if action in valid_actions.values():
         return True
     else:

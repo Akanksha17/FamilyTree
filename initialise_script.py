@@ -13,14 +13,14 @@ def initialise_family_tree():
     logging.debug('Initialised family tree')
 
     family_tree_obj.set_head_member(new_member)
-    test_data_file = open("set_up_commands.txt", "r")
+    test_data_file = open("initial_input_commands.txt", "r")
     data_file_lines = test_data_file.readlines()
 
     logging.debug('Starting File handling for set up commands')
-    for lines in data_file_lines:
+    for line in data_file_lines:
         updated_info = family_tree_service.update_family_tree(
             family_tree_obj,
-            lines
+            line.rstrip()
         )
         print(updated_info['msg'])
 

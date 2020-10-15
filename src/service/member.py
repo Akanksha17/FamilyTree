@@ -1,30 +1,47 @@
 from src.validation import is_relationship_data_valid, is_relationship_query_valid
 from src.constants import output_messages, relationship_type as relationship_type_constants, member_gender
-from src.models import member
+from src.models import member as member_model
 from src.service import family_tree as family_tree_service
 from src.relationship_definition import relationship_def
 import copy
 
 
-def add_parent(from_member, to_member, family_tree):
+def add_parent(from_member, to_member, gender, family_tree):
     from_member.set_parent(to_member)
 
 
-def add_spouse(from_member, to_member, family_tree):
+def add_spouse(from_member, to_member_name, gender, family_tree):
+    to_member = member_model.Member(to_member_name, gender)
     from_member.set_spouse(to_member)
-
-
-def add_child(from_member, to_member_name, gender, family_tree):
-    to_member = member.Member(to_member_name, gender)
-    from_member.set_children(to_member)
-    to_member.set_parent(from_member)
-    msg = output_messages['CHILD_ADDITION_SUCCEEDED']
     updated_family_tree = family_tree_service.add_member(to_member, family_tree)
-
+    msg = output_messages['SPOUSE_ADDITION_SUCCEEDED']
     return {
         'updated_family_tree': updated_family_tree,
         'msg': msg
     }
+
+
+def add_child(from_member, to_member_name, gender, family_tree):
+    to_member = member_model.Member(to_member_name, gender)
+    from_member.set_children(to_member)
+    to_member.set_parent(from_member)
+    updated_family_tree = family_tree_service.add_member(to_member, family_tree)
+    msg = output_messages['CHILD_ADDITION_SUCCEEDED']
+    return {
+        'updated_family_tree': updated_family_tree,
+        'msg': msg
+    }
+
+
+def add_relationship_switch(from_member, to_member_name, family_tree_instance, relationship_type, gender):
+    relationship_switcher = {
+        relationship_type_constants['SPOUSE']: add_spouse,
+
+        relationship_type_constants['CHILD']: add_child,
+        relationship_type_constants['PARENT']: add_parent
+    }
+    rel_func = relationship_switcher[relationship_type]
+    return rel_func(from_member, to_member_name, gender, family_tree_instance)
 
 
 def add_relationship(relationship_data,
@@ -43,21 +60,7 @@ def add_relationship(relationship_data,
     gender = relationship_data[2].upper()
     from_member = family_tree_instance.members.get(from_member_name)
     if from_member:
-        relationship_setter = {
-            relationship_type_constants['PARENT']: add_parent(from_member,
-                                                              to_member_name,
-                                                              family_tree_instance),
-
-            relationship_type_constants['SPOUSE']: add_spouse(from_member,
-                                                              to_member_name,
-                                                              family_tree_instance),
-
-            relationship_type_constants['CHILD']: add_child(from_member,
-                                                            to_member_name,
-                                                            gender,
-                                                            family_tree_instance)
-        }
-        return relationship_setter.get(relationship_type, 'Invalid')
+        return add_relationship_switch(from_member, to_member_name, family_tree_instance, relationship_type, gender)
     else:
         return {
             'msg': output_messages['PERSON_NOT_FOUND'],
@@ -90,7 +93,7 @@ def get_child(member_obj, child_gender):
         return res
 
 
-def relationship_switch(to_member, relationship_unit):
+def get_relationship_switch(to_member, relationship_unit):
     rel_type = relationship_unit['type']
     relationship_switcher = {
         relationship_type_constants['SPOUSE']: get_spouse,
@@ -100,14 +103,6 @@ def relationship_switch(to_member, relationship_unit):
     }
     rel_func = relationship_switcher[rel_type]
     return rel_func(to_member, relationship_unit['gender'])
-
-
-def find_member_relationship(relationship_trace_def, to_member):
-    current_member = copy.deepcopy(to_member)
-    result_members = [current_member]
-    for unit in relationship_trace_def:
-        result_members = relationship_switch(to_member, unit)
-    return result_members
 
 
 def get_relationship(arguments, family_tree_instance):
@@ -128,7 +123,7 @@ def get_relationship(arguments, family_tree_instance):
     for rel in relationship_trace:
         for unit in rel:
             for member_obj in start_members:
-                get_member = relationship_switch(member_obj, unit)
+                get_member = get_relationship_switch(member_obj, unit)
                 result1.extend(get_member)
             start_members = result1
         final_result.extend(result1)

@@ -12,7 +12,7 @@ def add_member(member, family_tree):
 def update_family_tree(family_tree_instance, input_command):
     if is_empty_user_input(input_command):
         error_msg = output_messages['INVALID_INPUT']
-        return error_msg
+        return {'msg': error_msg, 'updated_family_tree': family_tree_instance}
 
     input_list = input_command.split(' ')
     action = input_list[0]
