@@ -1,33 +1,59 @@
-from src.constants import relationship_unit
+direct_relationship = {
+    'FATHER': 'FATHER',
+    'MOTHER': 'MOTHER',
+    'SON': 'SON',
+    'DAUGHTER': 'DAUGHTER',
+    'PARENT': 'PARENT',
+    'CHILD': 'CHILD',
+    'SISTER': 'SISTER',
+    'BROTHER': 'BROTHER',
+    'SIBLING': 'SIBLING',
+    'SPOUSE': 'SPOUSE'
+}
 
-relationship_def = {
+indirect_relationship = {
     'PATERNAL-AUNT': [
         [
-            relationship_unit['MALE_PARENT'],
-            relationship_unit['ANY_PARENT'],
-            relationship_unit['FEMALE_CHILD']
+            direct_relationship['FATHER'],
+            direct_relationship['SISTER'],
+        ],
+    ],
+    'PATERNAL-UNCLE': [
+        [
+            direct_relationship['FATHER'],
+            direct_relationship['BROTHER']
+        ]
+    ],
+    'MATERNAL-UNCLE': [
+        [
+            direct_relationship['MOTHER'],
+            direct_relationship['BROTHER']
+        ]
+    ],
+    'MATERNAL-AUNT': [
+        [
+            direct_relationship['MOTHER'],
+            direct_relationship['SISTER']
+        ]
+    ],
+    'SISTER-IN-LAW': [
+        [
+            direct_relationship['SPOUSE'],
+            direct_relationship['SISTER']
         ],
         [
-            relationship_unit['MALE_PARENT'],
-            relationship_unit['ANY_PARENT'],
-            relationship_unit['MALE_CHILD'],
-            relationship_unit['FEMALE_SPOUSE']
+            direct_relationship['SIBLING'],
+            direct_relationship['SPOUSE'],
         ]
-
     ],
-    'FATHER': [
+    'BROTHER-IN-LAW': [
         [
-            relationship_unit['MALE_PARENT']
-        ]
-    ],
-    'SON': [
+            direct_relationship['SPOUSE'],
+            direct_relationship['BROTHER']
+        ],
         [
-            relationship_unit['MALE_CHILD'],
+            direct_relationship['SIBLING'],
+            direct_relationship['SPOUSE'],
         ]
     ],
-    'DAUGHTER': [
-            [
-                relationship_unit['FEMALE_CHILD'],
-            ]
-        ]
 }

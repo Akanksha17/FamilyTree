@@ -1,7 +1,8 @@
 relationship_type = {
     'CHILD': 'CHILD',
     'SPOUSE': 'SPOUSE',
-    'PARENT': 'PARENT'
+    'PARENT': 'PARENT',
+    'SIBLING': 'SIBLING'
 }
 
 member_gender = {
@@ -10,40 +11,56 @@ member_gender = {
     'N/A': 'N/A'
 }
 
-relationship_unit = {
-    'MALE_PARENT': {
-        'gender': member_gender['MALE'],
-        'type': relationship_type['PARENT']
-    },
-    'FEMALE_PARENT': {
-        'gender': member_gender['FEMALE'],
-        'type': relationship_type['PARENT']
-    },
-    'ANY_PARENT': {
-        'gender': member_gender['N/A'],
-        'type': relationship_type['PARENT']
-    },
-    'FEMALE_CHILD': {
-        'gender': member_gender['FEMALE'],
-        'type': relationship_type['CHILD']
-    },
-    'MALE_CHILD': {
-        'gender': member_gender['MALE'],
-        'type': relationship_type['CHILD']
-    },
-    'ANY_CHILD': {
-        'gender': member_gender['N/A'],
-        'type': relationship_type['CHILD']
-    },
-    'FEMALE_SPOUSE': {
-        'gender': member_gender['FEMALE'],
-        'type': relationship_type['SPOUSE']
-    },
-    'MALE_SPOUSE': {
-        'gender': member_gender['MALE'],
-        'type': relationship_type['SPOUSE']
-    }
-}
+# relationship_unit = {
+#     'MALE_PARENT': {
+#         'gender': member_gender['MALE'],
+#         'type': relationship_type['PARENT']
+#     },
+#     'FEMALE_PARENT': {
+#         'gender': member_gender['FEMALE'],
+#         'type': relationship_type['PARENT']
+#     },
+#     'ANY_PARENT': {
+#         'gender': member_gender['N/A'],
+#         'type': relationship_type['PARENT']
+#     },
+#     'FEMALE_CHILD': {
+#         'gender': member_gender['FEMALE'],
+#         'type': relationship_type['CHILD']
+#     },
+#     'MALE_CHILD': {
+#         'gender': member_gender['MALE'],
+#         'type': relationship_type['CHILD']
+#     },
+#     'ANY_CHILD': {
+#         'gender': member_gender['N/A'],
+#         'type': relationship_type['CHILD']
+#     },
+#     'ANY_SPOUSE': {
+#         'gender': member_gender['N/A'],
+#         'type': relationship_type['SPOUSE']
+#     },
+#     'MALE_SPOUSE': {
+#         'gender': member_gender['N/A'],
+#         'type': relationship_type['SPOUSE']
+#     },
+#     'FEMALE_SPOUSE': {
+#         'gender': member_gender['N/A'],
+#         'type': relationship_type['SPOUSE']
+#     },
+#     'ANY_SIBLING': {
+#         'gender': member_gender['N/A'],
+#         'type': relationship_type['SIBLING']
+#     },
+#     'MALE_SIBLING': {
+#         'gender': member_gender['MALE'],
+#         'type': relationship_type['SIBLING']
+#     },
+#     'FEMALE_SIBLING': {
+#         'gender': member_gender['FEMALE'],
+#         'type': relationship_type['SIBLING']
+#     }
+# }
 
 valid_actions = {
     'ADD_CHILD': 'ADD_CHILD',

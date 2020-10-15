@@ -1,5 +1,5 @@
 from src.constants import valid_actions, relationship_type, member_gender, output_messages
-from src.relationship_definition import relationship_def
+from src.relationship_definition import indirect_relationship, direct_relationship
 
 
 def is_empty_user_input(user_input):
@@ -53,7 +53,7 @@ def is_relationship_data_valid(relationship_name, input_data):
 
 
 def is_relationship_query_valid(relationship):
-    if relationship.upper() in relationship_def.keys():
+    if relationship.upper() in indirect_relationship.keys() or relationship.upper() in direct_relationship.keys():
         return True
     return False
 
