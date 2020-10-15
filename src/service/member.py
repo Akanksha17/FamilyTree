@@ -34,9 +34,10 @@ def add_relationship(relationship_data,
     valid, msg_obj = is_relationship_data_valid(relationship_type, relationship_data)
     if not valid:
         return {
-            'msg': msg_obj['error_message'],
+            'msg': msg_obj.get('error_message', output_messages['CHILD_ADDITION_FAILED']),
             'updated_family_tree': family_tree_instance
         }
+
     from_member_name = relationship_data[0]
     to_member_name = relationship_data[1]
     gender = relationship_data[2].upper()
@@ -73,7 +74,7 @@ def get_parent(member_obj, parent_gender):
         return [member_parent.get_spouse()]
 
 
-def get_spouse(member_obj):
+def get_spouse(member_obj, gender):
     return member_obj.get_spouse()
 
 
@@ -82,21 +83,23 @@ def get_child(member_obj, child_gender):
     if child_gender.upper() == member_gender['N/A']:
         return member_children
     else:
-        return list(
-            filter(lambda child: child['gender'] == child_gender.upper(), member_children))
+        res = []
+        for key, value in member_children.items():
+            if value.gender == child_gender:
+                res.append(value)
+        return res
 
 
 def relationship_switch(to_member, relationship_unit):
-    relationship_def_switch = {
-        relationship_type_constants['PARENT']: get_parent(to_member,
-                                                          relationship_unit.get('gender')),
+    rel_type = relationship_unit['type']
+    relationship_switcher = {
+        relationship_type_constants['SPOUSE']: get_spouse,
 
-        relationship_type_constants['SPOUSE']: get_spouse(to_member),
-
-        relationship_type_constants['CHILD']: get_child(to_member,
-                                                        relationship_unit.get('gender'))
+        relationship_type_constants['CHILD']: get_child,
+        relationship_type_constants['PARENT']: get_parent
     }
-    return relationship_def_switch.get(relationship_unit.get('type'), 'Invalid')
+    rel_func = relationship_switcher[rel_type]
+    return rel_func(to_member, relationship_unit['gender'])
 
 
 def find_member_relationship(relationship_trace_def, to_member):
@@ -112,18 +115,26 @@ def get_relationship(arguments, family_tree_instance):
     relationship_name = arguments[1]
 
     if not is_relationship_query_valid(relationship_name):
-        return False
+        return {
+            'msg': output_messages['RELATIONSHIP_UNSUPPORTED'],
+            'updated_family_tree': family_tree_instance
+        }
     to_member = family_tree_instance.members[to_member_name]
     relationship_trace = relationship_def[relationship_name.upper()]
     final_result = []
-    result = [to_member]
+
+    start_members = [to_member]
+    result1 = []
     for rel in relationship_trace:
-        for member_value in result:
-            if len(result) == 0:
-                break
-            result = find_member_relationship(rel, member_value)
-            final_result.extend(result)
-        return final_result
+        for unit in rel:
+            for member_obj in start_members:
+                get_member = relationship_switch(member_obj, unit)
+                result1.extend(get_member)
+            start_members = result1
+        final_result.extend(result1)
+    return final_result
+
+
 
 
 

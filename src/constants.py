@@ -58,10 +58,16 @@ relationship_def = {
             relationship_unit['MALE_CHILD'],
             relationship_unit['FEMALE_SPOUSE']
         ]
+
     ],
     'FATHER': [
         [
             relationship_unit['MALE_PARENT']
+        ]
+    ],
+    'SON': [
+        [
+            relationship_unit['MALE_CHILD'],
         ]
     ]
 }
@@ -78,5 +84,7 @@ output_messages = {
     'PERSON_NOT_FOUND': 'PERSON_NOT_FOUND',
     'INVALID_NUMBER_OF_ARGS': 'INVALID_NUMBER_OF_ARGS',
     'INVALID_GENDER': 'INVALID_GENDER',
-    'INVALID_RELATIONSHIP_TYPE': 'INVALID_RELATIONSHIP_TYPE'
+    'INVALID_RELATIONSHIP_TYPE': 'INVALID_RELATIONSHIP_TYPE',
+    'CHILD_ADDITION_FAILED': 'CHILD_ADDITION_FAILED',
+    'RELATIONSHIP_UNSUPPORTED': 'RELATIONSHIP_UNSUPPORTED'
 }

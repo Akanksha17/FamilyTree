@@ -19,7 +19,7 @@ def is_action_valid(action):
 def is_relationship_args_valid(relationship, input_data):
     relationship_args_map = {
         relationship_type['CHILD']: 3,
-        relationship_type['SPOUSE']: 2
+        relationship_type['SPOUSE']: 3
     }
     if len(input_data) < relationship_args_map[relationship]:
         return False
@@ -41,16 +41,13 @@ def is_gender_valid(gender):
 
 
 def is_relationship_data_valid(relationship_name, input_data):
-    if not is_relationship_type_valid(relationship_name):
-        return False, {'error_message': output_messages['INVALID_RELATIONSHIP_TYPE']}
-
-    if not is_relationship_args_valid(relationship_name, input_data):
-        return False, {'error_message': output_messages['INVALID_NUMBER_OF_ARGS']}
+    if not is_relationship_type_valid(relationship_name)\
+            or not is_relationship_args_valid(relationship_name, input_data):
+        return False, {'error_message': output_messages['CHILD_ADDITION_FAILED']}
 
     gender = input_data[2]
-
     if not is_gender_valid(gender):
-        return False, {'error_message': output_messages['INVALID_GENDER']}
+        return False, {'error_message': output_messages['CHILD_ADDITION_FAILED']}
 
     return True, {'error_message': None}
 

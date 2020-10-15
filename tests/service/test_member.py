@@ -1,7 +1,7 @@
 import unittest
 from src.constants import relationship_type, output_messages, member_gender
 from src.service import member as member_service
-from tests.helper import member as test_member_helper, family_tree as test_family_tree_helper
+from tests.data_helper import member as test_member_helper, family_tree as test_family_tree_helper
 
 child_relationship = relationship_type['CHILD']
 add_child_relationship_data = ['Shan', 'Chit', 'MALE']

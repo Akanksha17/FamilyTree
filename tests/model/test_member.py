@@ -1,7 +1,7 @@
 import unittest
 from src.models import member
 from src.constants import member_gender
-from tests.helper import member as member_helper
+from tests.data_helper import member as member_helper
 
 
 class TestMember(unittest.TestCase):
