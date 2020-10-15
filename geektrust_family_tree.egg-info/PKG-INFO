@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: geektrust-family-tree
+Version: 0.0.1
+Summary: GeekTrust family tree problem
+Home-page: https://github.com/Akanksha17/FamilyTree
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
