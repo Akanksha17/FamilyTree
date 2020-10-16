@@ -6,9 +6,9 @@ from src.models import member as member_model, family_tree as family_tree_model
 child_relationship = relationship_type['CHILD']
 get_relationship_action = valid_actions['GET_RELATIONSHIP']
 
-first_member = member_model.Member('Shan', member_gender['MALE'])
+first_member = member_model.Member('Anga', member_gender['FEMALE'])
 members_obj = {
-    'Shan': first_member
+    'Anga': first_member
 }
 
 family_tree_obj = family_tree_model.FamilyTree(members_obj)
@@ -17,7 +17,7 @@ family_tree_obj.set_head_member(first_member)
 
 class TestMemberController(unittest.TestCase):
     def test_add_relationship_success(self):
-        result = member_controller.add_relationship(['Shan', 'Chit', 'Male'],
+        result = member_controller.add_relationship(['Anga', 'Chit', 'Male'],
                                                     child_relationship,
                                                     family_tree_obj)
         self.assertEqual(result['msg'], output_messages['CHILD_ADDITION_SUCCEEDED'])
@@ -26,14 +26,14 @@ class TestMemberController(unittest.TestCase):
         self.assertEqual(parent, first_member)
 
     def test_add_relationship_failure(self):
-        result = member_controller.add_relationship(['Shan', 'Chit', 'Male'],
+        result = member_controller.add_relationship(['Anga', 'Chit', 'Male'],
                                                     'Test',
                                                     family_tree_obj)
 
         self.assertEqual(result['msg'], output_messages['CHILD_ADDITION_FAILED'])
 
     def test_get_relationship_success(self):
-        added_result = member_controller.add_relationship(['Shan', 'Chit', 'Male'],
+        added_result = member_controller.add_relationship(['Anga', 'Chit', 'Male'],
                                                           child_relationship,
                                                           family_tree_obj)
         result = member_controller.get_relationship(['Shan', 'Son'], added_result['updated_family_tree'])

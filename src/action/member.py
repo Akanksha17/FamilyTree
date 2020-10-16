@@ -1,3 +1,4 @@
+
 from src.constants import output_messages, valid_actions, relationship_type as relationship_type_constants
 from src.controller import member as member_controller
 from src.validation import is_action_valid
@@ -10,6 +11,7 @@ def execute_add_action(action, family_tree_instance, arguments):
     }
     action_func, rel_type = action_map[action][0], action_map[action][1]
     action_result = action_func(arguments, rel_type, family_tree_instance)
+
     print(action_result.get('msg', output_messages['NO_RESULT']))
     return action_result
 
@@ -32,6 +34,6 @@ def execute(action, family_tree_instance, arguments):
         for member_obj in result['members_list']:
             print(member_obj.name, end=" ")
         print('\n')
-        return
+        return result
     else:
         return execute_add_action(action, family_tree_instance, arguments)
