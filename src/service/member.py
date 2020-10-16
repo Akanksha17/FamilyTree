@@ -11,7 +11,7 @@ def add_relationship(relationship_data,
     valid, msg_obj = is_relationship_data_valid(relationship_type, relationship_data)
     if not valid:
         return {
-            'msg': msg_obj.get('error_message', output_messages['CHILD_ADDITION_FAILED']),
+            'error_msg': msg_obj.get('error_message', output_messages['CHILD_ADDITION_FAILED']),
             'updated_family_tree': family_tree_instance
         }
 
@@ -23,7 +23,7 @@ def add_relationship(relationship_data,
         return member_helper.add_relationship_switch(from_member, to_member_name, family_tree_instance, relationship_type, gender)
     else:
         return {
-            'msg': output_messages['PERSON_NOT_FOUND'],
+            'error_msg': output_messages['PERSON_NOT_FOUND'],
             'updated_family_tree': family_tree_instance
         }
 
@@ -50,7 +50,7 @@ def get_relationship(arguments, family_tree_instance):
         final_list = member_helper\
             .direct_relationship_switch(to_member, direct_relationship_obj)
 
-        return {'msg': output_messages['SUCCESS'], 'members_list': final_list}
+        return {'success_msg': output_messages['SUCCESS'], 'members_list': final_list}
     else:
         relationship_trace = indirect_relationship[relationship_name.upper()]
         final_result = []
@@ -66,4 +66,4 @@ def get_relationship(arguments, family_tree_instance):
                     intermediate_result.extend(result1)
                 start_members = result1
             final_result.extend(intermediate_result)
-        return {'msg': output_messages['SUCCESS'], 'members_list': final_result}
+        return {'success_msg': output_messages['SUCCESS'], 'members_list': final_result}

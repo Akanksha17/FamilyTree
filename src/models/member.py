@@ -40,16 +40,21 @@ class Member:
                     children_list.append(value)
 
     def get_sibling(self, gender=None):
-        parent = self._parent
-        parent_child = copy.deepcopy(parent.get_children())
+        parent = self.get_parent()
+        parent_children = {}
+        if parent:
+            parent_children = parent.get_children()
+
+        parent_children_cp = copy.deepcopy(parent_children)
+
         current_member_name = self.name
-        if current_member_name in parent_child.keys():
-            parent_child.pop(current_member_name)
+        if current_member_name in parent_children_cp.keys():
+            parent_children_cp.pop(current_member_name)
         if not gender:
-            return parent_child.values()
+            return parent_children_cp.values()
         else:
             sibling_list = []
-            for key, value in parent_child.items():
+            for key, value in parent_children_cp.items():
                 if value.gender == gender:
                     sibling_list.append(value)
             return sibling_list

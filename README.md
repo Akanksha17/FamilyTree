@@ -7,4 +7,4 @@ Python version support >= 3.6
 pip install -r requirements.txt
 
 2. Start the program
- python -m geektrust <path of the test file>
+ python -m geektrust #path of the test file

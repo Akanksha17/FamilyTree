@@ -14,7 +14,7 @@ class TestFamilyTree(unittest.TestCase):
         family_tree_obj = family_tree_model.FamilyTree(members_obj)
         family_tree_obj.set_head_member(new_member)
         result = family_tree_service.update_family_tree(family_tree_obj, command)
-        self.assertEqual(result['msg'], output_messages['CHILD_ADDITION_SUCCEEDED'])
+        self.assertEqual(result['success_msg'], output_messages['CHILD_ADDITION_SUCCEEDED'])
         newly_created_child = result['updated_family_tree'].members['Chit']
         self.assertEqual(newly_created_child.get_parent(), new_member)
 

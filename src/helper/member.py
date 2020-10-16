@@ -102,17 +102,17 @@ def add_spouse(from_member, to_member_name, gender, family_tree):
     from_member.set_spouse(to_member)
     to_member.set_spouse(from_member)
     updated_family_tree = family_tree_service.add_member(to_member, family_tree)
-    msg = output_messages['SPOUSE_ADDITION_SUCCEEDED']
+    success_msg = output_messages['SPOUSE_ADDITION_SUCCEEDED']
     return {
         'updated_family_tree': updated_family_tree,
-        'msg': msg
+        'msg': success_msg
     }
 
 
 def add_child(from_member, to_member_name, gender, family_tree):
     if from_member.gender == member_gender_constant['MALE']:
         return {
-            'msg': output_messages['CHILD_ADDITION_FAILED'],
+            'success_msg': output_messages['CHILD_ADDITION_FAILED'],
             'updated_family_tree': family_tree,
         }
     to_member = member_model.Member(to_member_name, gender)
@@ -124,10 +124,10 @@ def add_child(from_member, to_member_name, gender, family_tree):
     if not to_member_parent:
         to_member.set_parent(from_member)
     updated_family_tree = family_tree_service.add_member(to_member, family_tree)
-    msg = output_messages['CHILD_ADDITION_SUCCEEDED']
+    success_msg = output_messages['CHILD_ADDITION_SUCCEEDED']
     return {
         'updated_family_tree': updated_family_tree,
-        'msg': msg
+        'success_msg': success_msg
     }
 
 

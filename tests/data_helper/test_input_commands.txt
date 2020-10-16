@@ -1,0 +1,5 @@
+ADD_CHILD Chitra Aria Female
+GET_RELATIONSHIP Aria Paternal-Aunt
+GET_RELATIONSHIP Lavnya Maternal-Uncle
+ADD_CHILD Satya Yaya Female
+GET_RELATIONSHIP Satvy Sister-In-Law

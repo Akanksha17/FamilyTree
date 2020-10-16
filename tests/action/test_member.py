@@ -18,7 +18,7 @@ family_tree_obj.set_head_member(first_member)
 class TestMemberAction(unittest.TestCase):
     def test_add_child_action_success(self):
         result = member_action.execute(child_action, family_tree_obj, ['Anga', 'Chit', 'Male'])
-        self.assertEqual(result['msg'], output_messages['CHILD_ADDITION_SUCCEEDED'])
+        self.assertEqual(result['success_msg'], output_messages['CHILD_ADDITION_SUCCEEDED'])
         newly_added_member = result['updated_family_tree'].members['Chit']
         parent = newly_added_member.get_parent()
         self.assertEqual(parent, first_member)
@@ -32,5 +32,5 @@ class TestMemberAction(unittest.TestCase):
     def test_action_failure(self):
         invalid_action_type = 'ADD_TEST'
         result = member_action.execute(invalid_action_type, family_tree_obj, ['Anga', 'Shin', 'Male'])
-        self.assertEqual(result['msg'], output_messages['INVALID_ACTION'])
+        self.assertEqual(result['error_msg'], output_messages['INVALID_ACTION'])
 

@@ -12,7 +12,7 @@ family_tree = test_family_tree_helper.create_family_tree({'Anga': parent}, paren
 class TestMember(unittest.TestCase):
     def test_add_child_success(self):
         result = member_service.add_relationship(add_child_relationship_data, child_relationship, family_tree)
-        self.assertEqual(result['msg'], output_messages['CHILD_ADDITION_SUCCEEDED'])
+        self.assertEqual(result['success_msg'], output_messages['CHILD_ADDITION_SUCCEEDED'])
 
         updated_family_tree = result['updated_family_tree']
         newly_created_child = updated_family_tree.members['Chit']
@@ -33,7 +33,7 @@ class TestMember(unittest.TestCase):
     def test_add_child_failure(self):
         mock_relationship_data = ['Kriya', 'Chit', 'FEMALE']
         result = member_service.add_relationship(mock_relationship_data, child_relationship, family_tree)
-        self.assertEqual(result['msg'], output_messages['PERSON_NOT_FOUND'])
+        self.assertEqual(result['error_msg'], output_messages['PERSON_NOT_FOUND'])
 
 
 if __name__ == '__main__':
